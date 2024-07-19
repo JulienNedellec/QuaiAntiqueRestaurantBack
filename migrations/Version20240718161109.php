@@ -18,10 +18,15 @@ final class Version20240718161109 extends AbstractMigration
     }
 
     public function up(Schema $schema): void
-    {
-        // this up() migration is auto-generated, please modify it to your needs
+{
+    // Vérifie si la table 'restaurant' existe déjà pour éviter de la recréer
+    $tableExists = $schema->hasTable('restaurant');
+
+    if (!$tableExists) {
+        // Cette migration est auto-générée, veuillez la modifier selon vos besoins
         $this->addSql('CREATE TABLE restaurant (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4');
     }
+}
 
     public function down(Schema $schema): void
     {
