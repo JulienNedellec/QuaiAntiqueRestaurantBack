@@ -1,0 +1,61 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/registration": {
+            "post": {
+                "summary": "Inscription d'un nouvel utilisateur",
+                "operationId": "76f4399a4e68225dd40d227515165f56",
+                "requestBody": {
+                    "description": "Données de l'utilisateur à inscrire",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "adresse@email.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "Mot de passe"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Utilisateur inscrit avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "type": "string",
+                                            "example": "Nom d'utilisateur"
+                                        },
+                                        "apiToken": {
+                                            "type": "string",
+                                            "example": "31a023e212f116124a36af14ea0c1c3806eb9378"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "ROLE_USER"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
