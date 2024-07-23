@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -15,6 +16,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(length: 32)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 64)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    private ?int $guestNumber = null;
 
     #[ORM\Column(length: 180)]
     private ?string $email = null;
@@ -43,6 +53,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): static
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getGuestNumber(): ?int
+    {
+        return $this->guestNumber;
+    }
+
+    public function setGuestNumber(int $guestNumber): static
+    {
+        $this->guestNumber = $guestNumber;
+
+        return $this;
     }
 
     public function getEmail(): ?string
